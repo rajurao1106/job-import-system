@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# Build files
+dist/
+build/
+
+# Env files
+.env
+.env.*
+*.pem
+
+# Logs
+logs/
+*.log
+
+# Temporary
+tmp/
+temp/
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Cache
+.eslintcache

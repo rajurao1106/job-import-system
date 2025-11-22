@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/db:/data/db
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  server:
+    build: ./server
+    command: npm run dev
+    ports:
+      - "5000:4000"
+    environment:
+      MONGO_URI: mongodb+srv://rajurao1107:raoraju13377@cluster0.zjucb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      REDIS_URL: redis://redis:6379
+      FEED_URLS: https://jobicy.com/?feed=job_feed
+    depends_on:
+      - mongo
+      - redis
+
+  worker:
+    build: ./server
+    command: npm run worker
+    environment:
+      MONGO_URI: mongodb+srv://rajurao1107:raoraju13377@cluster0.zjucb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      REDIS_URL: redis://redis:6379
+      FEED_URLS: https://jobicy.com/?feed=job_feed
+    depends_on:
+      - mongo
+      - redis
+
+  client:
+    build: ./client
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
