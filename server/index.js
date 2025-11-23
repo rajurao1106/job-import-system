@@ -11,7 +11,7 @@ const ImportLog = require('./models/ImportLog');
 
 const app = express();
 app.use(express.json());
-app.use(cors({ origin: ["http://localhost:3000", "https://job-import-system-frontend-flame.vercel.app/"], credentials: true }));
+app.use(cors({ origin: ["http://localhost:3000", "https://job-import-system-frontend-flame.vercel.app"], credentials: true }));
 
 const PORT = process.env.PORT || 4000;
 
