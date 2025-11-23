@@ -29,3 +29,6 @@ debug.log
 # Docker volumes
 data/
 docker-data/
+
+server/node_modules
+server/package-lock.json
