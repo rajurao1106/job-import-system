@@ -33,7 +33,7 @@ services:
       MONGO_URI: mongodb+srv://rajurao1107:raoraju13377@cluster0.zjucb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       REDIS_URL: redis://redis:6379
       FEED_URLS: https://jobicy.com/?feed=job_feed
-    depends_on:
+    depends_on: 
       - mongo
       - redis
 
